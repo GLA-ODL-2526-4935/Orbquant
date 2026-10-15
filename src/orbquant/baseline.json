@@ -1,0 +1,36 @@
+{
+  "id": "loglinear-volatility-public-v1",
+  "feature_schema": [
+    "log_past60_variance",
+    "log_past15_variance_scaled60",
+    "five_minute_session_sin_float32",
+    "five_minute_session_cos_float32"
+  ],
+  "coefficient_order": "four features then intercept",
+  "target": "60 future one-minute open log-return squares summed",
+  "training_period": "2020-10-14 through 2022-12-31",
+  "calibration_period": "2023-07-01 through 2023-12-31",
+  "evaluation_note": "Retrospective periods previously inspected; no untouched holdout or profitability claim",
+  "models": {
+    "SPY": {
+      "coefficients": [
+        0.7359819401374843,
+        0.18161570301279062,
+        -0.28457468045162404,
+        0.027300107613922486,
+        -1.0567360572020583
+      ],
+      "factor": 1.1782174216579797
+    },
+    "QQQ": {
+      "coefficients": [
+        0.7478586133849393,
+        0.1804301118877612,
+        -0.25194292494703846,
+        0.010480820861415776,
+        -0.949478136793917
+      ],
+      "factor": 1.1341222002071205
+    }
+  }
+}

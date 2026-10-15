@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=75,<85"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orbquant-public"
+version = "0.1.0"
+description = "Volatility forecasting and auditable, paper-only simulation."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = ["numpy>=2.2,<3", "exchange-calendars>=4.8,<5", "httpx==0.28.1", "websockets==17.2", "tzdata>=2025.1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "hypothesis>=6,<7"]
+
+[project.scripts]
+orbquant-demo = "orbquant.demo:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["orbquant_network_guard"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+orbquant = ["baseline.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
